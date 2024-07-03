@@ -18,10 +18,10 @@
       wait_for: "host={{ hostvars['server1']['ansible_default_ipv4']['address'] }} port=6443 timeout=1"
 
     - name: join cluster
-      shell: "{{ hostvars['server1'].join_command }} >> node_joined.log"
-      args:
-        chdir: /home/ansible
-        creates: node_joined.log
+      command: "{{ hostvars['server1'].join_command }} >> node_joined.log"
+      #args:
+        #chdir: /home/ansible
+        #creates: node_joined.log
         
     - name: display join command
       debug:
